@@ -1,0 +1,8 @@
+prefix=/home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/install
+
+Name: tutorials
+Description: Description of tutorials
+Version: 0.0.0
+Cflags: -I/home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/install/include
+Libs: -L/home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/install/lib 
+Requires: roscpp rospy sensor_msgs std_msgs message_runtime

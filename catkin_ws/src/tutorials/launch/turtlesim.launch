@@ -1,0 +1,9 @@
+<launch>
+  <group ns="sim1">
+    <node pkg="turtlesim" name="sim" type="turtlesim_node"/>
+  </group>
+
+  <group ns="sim2">
+    <node pkg="turtlesim" name="sim" type="turtlesim_node"/>
+  </group>
+</launch>
