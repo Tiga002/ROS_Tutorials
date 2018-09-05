@@ -127,6 +127,16 @@ include_directories(
  add_executable(Cpp_Subscriber_Node src/Cpp_Subscriber.cpp)
  target_link_libraries(Cpp_Subscriber_Node ${catkin_LIBRARIES})
  add_dependencies(Cpp_Subscriber_Node tutorials_generate_messages_cpp)
+
+
+ add_executable(Adding_Two_Integer_Server_Node src/Cpp_Server.cpp)
+ target_link_libraries(Adding_Two_Integer_Server_Node ${catkin_LIBRARIES})
+ add_dependencies(Adding_Two_Integer_Server_Node tutorials_generate_messages_cpp)
+
+  add_executable(Adding_Two_Integer_Client_Node src/Cpp_Client.cpp)
+ target_link_libraries(Adding_Two_Integer_Client_Node ${catkin_LIBRARIES})
+ add_dependencies(Adding_Two_Integer_Client_Node tutorials_generate_messages_cpp)
+
 #############
 ## Install ##
 #############

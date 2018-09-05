@@ -56,6 +56,17 @@ CMAKE_BINARY_DIR = /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -65,6 +76,18 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -88,18 +111,6 @@ install/strip/fast: install/strip
 
 .PHONY : install/strip/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -121,17 +132,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -224,6 +224,21 @@ roscpp_generate_messages_lisp: tutorials/CMakeFiles/roscpp_generate_messages_lis
 roscpp_generate_messages_lisp/fast:
 	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f tutorials/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make tutorials/CMakeFiles/roscpp_generate_messages_lisp.dir/build
 .PHONY : roscpp_generate_messages_lisp/fast
+
+# Convenience name for target.
+tutorials/CMakeFiles/Adding_Two_Integer_Server_Node.dir/rule:
+	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tutorials/CMakeFiles/Adding_Two_Integer_Server_Node.dir/rule
+.PHONY : tutorials/CMakeFiles/Adding_Two_Integer_Server_Node.dir/rule
+
+# Convenience name for target.
+Adding_Two_Integer_Server_Node: tutorials/CMakeFiles/Adding_Two_Integer_Server_Node.dir/rule
+
+.PHONY : Adding_Two_Integer_Server_Node
+
+# fast build rule for target.
+Adding_Two_Integer_Server_Node/fast:
+	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f tutorials/CMakeFiles/Adding_Two_Integer_Server_Node.dir/build.make tutorials/CMakeFiles/Adding_Two_Integer_Server_Node.dir/build
+.PHONY : Adding_Two_Integer_Server_Node/fast
 
 # Convenience name for target.
 tutorials/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
@@ -526,6 +541,36 @@ tutorials_generate_messages/fast:
 .PHONY : tutorials_generate_messages/fast
 
 # Convenience name for target.
+tutorials/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
+	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tutorials/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+.PHONY : tutorials/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_lisp: tutorials/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : std_msgs_generate_messages_lisp
+
+# fast build rule for target.
+std_msgs_generate_messages_lisp/fast:
+	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f tutorials/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make tutorials/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
+.PHONY : std_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+tutorials/CMakeFiles/_tutorials_generate_messages_check_deps_mySRV.dir/rule:
+	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tutorials/CMakeFiles/_tutorials_generate_messages_check_deps_mySRV.dir/rule
+.PHONY : tutorials/CMakeFiles/_tutorials_generate_messages_check_deps_mySRV.dir/rule
+
+# Convenience name for target.
+_tutorials_generate_messages_check_deps_mySRV: tutorials/CMakeFiles/_tutorials_generate_messages_check_deps_mySRV.dir/rule
+
+.PHONY : _tutorials_generate_messages_check_deps_mySRV
+
+# fast build rule for target.
+_tutorials_generate_messages_check_deps_mySRV/fast:
+	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f tutorials/CMakeFiles/_tutorials_generate_messages_check_deps_mySRV.dir/build.make tutorials/CMakeFiles/_tutorials_generate_messages_check_deps_mySRV.dir/build
+.PHONY : _tutorials_generate_messages_check_deps_mySRV/fast
+
+# Convenience name for target.
 tutorials/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
 	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tutorials/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 .PHONY : tutorials/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
@@ -691,36 +736,6 @@ Cpp_Publisher_Node/fast:
 .PHONY : Cpp_Publisher_Node/fast
 
 # Convenience name for target.
-tutorials/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
-	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tutorials/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : tutorials/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_lisp: tutorials/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : std_msgs_generate_messages_lisp
-
-# fast build rule for target.
-std_msgs_generate_messages_lisp/fast:
-	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f tutorials/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make tutorials/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-.PHONY : std_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-tutorials/CMakeFiles/_tutorials_generate_messages_check_deps_mySRV.dir/rule:
-	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tutorials/CMakeFiles/_tutorials_generate_messages_check_deps_mySRV.dir/rule
-.PHONY : tutorials/CMakeFiles/_tutorials_generate_messages_check_deps_mySRV.dir/rule
-
-# Convenience name for target.
-_tutorials_generate_messages_check_deps_mySRV: tutorials/CMakeFiles/_tutorials_generate_messages_check_deps_mySRV.dir/rule
-
-.PHONY : _tutorials_generate_messages_check_deps_mySRV
-
-# fast build rule for target.
-_tutorials_generate_messages_check_deps_mySRV/fast:
-	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f tutorials/CMakeFiles/_tutorials_generate_messages_check_deps_mySRV.dir/build.make tutorials/CMakeFiles/_tutorials_generate_messages_check_deps_mySRV.dir/build
-.PHONY : _tutorials_generate_messages_check_deps_mySRV/fast
-
-# Convenience name for target.
 tutorials/CMakeFiles/Cpp_Subscriber_Node.dir/rule:
 	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tutorials/CMakeFiles/Cpp_Subscriber_Node.dir/rule
 .PHONY : tutorials/CMakeFiles/Cpp_Subscriber_Node.dir/rule
@@ -751,6 +766,21 @@ geometry_msgs_generate_messages_cpp/fast:
 .PHONY : geometry_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
+tutorials/CMakeFiles/Adding_Two_Integer_Client_Node.dir/rule:
+	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tutorials/CMakeFiles/Adding_Two_Integer_Client_Node.dir/rule
+.PHONY : tutorials/CMakeFiles/Adding_Two_Integer_Client_Node.dir/rule
+
+# Convenience name for target.
+Adding_Two_Integer_Client_Node: tutorials/CMakeFiles/Adding_Two_Integer_Client_Node.dir/rule
+
+.PHONY : Adding_Two_Integer_Client_Node
+
+# fast build rule for target.
+Adding_Two_Integer_Client_Node/fast:
+	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f tutorials/CMakeFiles/Adding_Two_Integer_Client_Node.dir/build.make tutorials/CMakeFiles/Adding_Two_Integer_Client_Node.dir/build
+.PHONY : Adding_Two_Integer_Client_Node/fast
+
+# Convenience name for target.
 tutorials/CMakeFiles/tutorials_generate_messages_py.dir/rule:
 	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 tutorials/CMakeFiles/tutorials_generate_messages_py.dir/rule
 .PHONY : tutorials/CMakeFiles/tutorials_generate_messages_py.dir/rule
@@ -764,6 +794,33 @@ tutorials_generate_messages_py: tutorials/CMakeFiles/tutorials_generate_messages
 tutorials_generate_messages_py/fast:
 	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f tutorials/CMakeFiles/tutorials_generate_messages_py.dir/build.make tutorials/CMakeFiles/tutorials_generate_messages_py.dir/build
 .PHONY : tutorials_generate_messages_py/fast
+
+src/Cpp_Client.o: src/Cpp_Client.cpp.o
+
+.PHONY : src/Cpp_Client.o
+
+# target to build an object file
+src/Cpp_Client.cpp.o:
+	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f tutorials/CMakeFiles/Adding_Two_Integer_Client_Node.dir/build.make tutorials/CMakeFiles/Adding_Two_Integer_Client_Node.dir/src/Cpp_Client.cpp.o
+.PHONY : src/Cpp_Client.cpp.o
+
+src/Cpp_Client.i: src/Cpp_Client.cpp.i
+
+.PHONY : src/Cpp_Client.i
+
+# target to preprocess a source file
+src/Cpp_Client.cpp.i:
+	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f tutorials/CMakeFiles/Adding_Two_Integer_Client_Node.dir/build.make tutorials/CMakeFiles/Adding_Two_Integer_Client_Node.dir/src/Cpp_Client.cpp.i
+.PHONY : src/Cpp_Client.cpp.i
+
+src/Cpp_Client.s: src/Cpp_Client.cpp.s
+
+.PHONY : src/Cpp_Client.s
+
+# target to generate assembly for a file
+src/Cpp_Client.cpp.s:
+	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f tutorials/CMakeFiles/Adding_Two_Integer_Client_Node.dir/build.make tutorials/CMakeFiles/Adding_Two_Integer_Client_Node.dir/src/Cpp_Client.cpp.s
+.PHONY : src/Cpp_Client.cpp.s
 
 src/Cpp_Publisher.o: src/Cpp_Publisher.cpp.o
 
@@ -791,6 +848,33 @@ src/Cpp_Publisher.s: src/Cpp_Publisher.cpp.s
 src/Cpp_Publisher.cpp.s:
 	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f tutorials/CMakeFiles/Cpp_Publisher_Node.dir/build.make tutorials/CMakeFiles/Cpp_Publisher_Node.dir/src/Cpp_Publisher.cpp.s
 .PHONY : src/Cpp_Publisher.cpp.s
+
+src/Cpp_Server.o: src/Cpp_Server.cpp.o
+
+.PHONY : src/Cpp_Server.o
+
+# target to build an object file
+src/Cpp_Server.cpp.o:
+	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f tutorials/CMakeFiles/Adding_Two_Integer_Server_Node.dir/build.make tutorials/CMakeFiles/Adding_Two_Integer_Server_Node.dir/src/Cpp_Server.cpp.o
+.PHONY : src/Cpp_Server.cpp.o
+
+src/Cpp_Server.i: src/Cpp_Server.cpp.i
+
+.PHONY : src/Cpp_Server.i
+
+# target to preprocess a source file
+src/Cpp_Server.cpp.i:
+	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f tutorials/CMakeFiles/Adding_Two_Integer_Server_Node.dir/build.make tutorials/CMakeFiles/Adding_Two_Integer_Server_Node.dir/src/Cpp_Server.cpp.i
+.PHONY : src/Cpp_Server.cpp.i
+
+src/Cpp_Server.s: src/Cpp_Server.cpp.s
+
+.PHONY : src/Cpp_Server.s
+
+# target to generate assembly for a file
+src/Cpp_Server.cpp.s:
+	cd /home/SENSETIME/leunghoyin/Documents/ROS_Tutorials/catkin_ws/build && $(MAKE) -f tutorials/CMakeFiles/Adding_Two_Integer_Server_Node.dir/build.make tutorials/CMakeFiles/Adding_Two_Integer_Server_Node.dir/src/Cpp_Server.cpp.s
+.PHONY : src/Cpp_Server.cpp.s
 
 src/Cpp_Subscriber.o: src/Cpp_Subscriber.cpp.o
 
@@ -825,10 +909,12 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... rebuild_cache"
 	@echo "... sensor_msgs_generate_messages_cpp"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_lisp"
+	@echo "... Adding_Two_Integer_Server_Node"
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_py"
@@ -850,6 +936,9 @@ help:
 	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... sensor_msgs_generate_messages_nodejs"
 	@echo "... tutorials_generate_messages"
+	@echo "... install"
+	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... _tutorials_generate_messages_check_deps_mySRV"
 	@echo "... install/local"
 	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... tutorials_generate_messages_cpp"
@@ -863,18 +952,21 @@ help:
 	@echo "... tutorials_genpy"
 	@echo "... sensor_msgs_generate_messages_lisp"
 	@echo "... Cpp_Publisher_Node"
-	@echo "... std_msgs_generate_messages_lisp"
-	@echo "... _tutorials_generate_messages_check_deps_mySRV"
-	@echo "... install"
 	@echo "... Cpp_Subscriber_Node"
 	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... test"
+	@echo "... Adding_Two_Integer_Client_Node"
 	@echo "... tutorials_generate_messages_py"
 	@echo "... edit_cache"
-	@echo "... rebuild_cache"
+	@echo "... src/Cpp_Client.o"
+	@echo "... src/Cpp_Client.i"
+	@echo "... src/Cpp_Client.s"
 	@echo "... src/Cpp_Publisher.o"
 	@echo "... src/Cpp_Publisher.i"
 	@echo "... src/Cpp_Publisher.s"
+	@echo "... src/Cpp_Server.o"
+	@echo "... src/Cpp_Server.i"
+	@echo "... src/Cpp_Server.s"
 	@echo "... src/Cpp_Subscriber.o"
 	@echo "... src/Cpp_Subscriber.i"
 	@echo "... src/Cpp_Subscriber.s"
